@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/spelens-gud/trunk/pkg/assert"
+	`github.com/spelens-gud/assert`
 	"go.uber.org/zap"
 )
 
