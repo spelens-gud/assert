@@ -121,44 +121,44 @@ assert.Then(value > 0).
 
 Must 系列函数在错误发生时会触发 panic，适用于必须成功的关键操作。
 
-| 函数                                                                                                 | 说明                            |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------- |
-| `MustCall0E(f func() error, msg ...any)`                                                             | 执行无参数返回 error 的函数     |
+| 函数                                                                                                   | 说明                  |
+|------------------------------------------------------------------------------------------------------|---------------------|
+| `MustCall0E(f func() error, msg ...any)`                                                             | 执行无参数返回 error 的函数   |
 | `MustCall0RE[R](f func() (R, error), msg ...any) R`                                                  | 执行无参数返回值和 error 的函数 |
-| `MustCall1E[T](f func(T) error, arg T, msg ...any)`                                                  | 执行单参数返回 error 的函数     |
+| `MustCall1E[T](f func(T) error, arg T, msg ...any)`                                                  | 执行单参数返回 error 的函数   |
 | `MustCall1RE[T, R](f func(T) (R, error), arg T, msg ...any) R`                                       | 执行单参数返回值和 error 的函数 |
-| `MustCall2E[T1, T2](f func(T1, T2) error, arg1 T1, arg2 T2, msg ...any)`                             | 执行双参数返回 error 的函数     |
+| `MustCall2E[T1, T2](f func(T1, T2) error, arg1 T1, arg2 T2, msg ...any)`                             | 执行双参数返回 error 的函数   |
 | `MustCall2RE[T1, T2, R](f func(T1, T2) (R, error), arg1 T1, arg2 T2, msg ...any) R`                  | 执行双参数返回值和 error 的函数 |
-| `MustCall3E[T1, T2, T3](f func(T1, T2, T3) error, arg1 T1, arg2 T2, arg3 T3, msg ...any)`            | 执行三参数返回 error 的函数     |
+| `MustCall3E[T1, T2, T3](f func(T1, T2, T3) error, arg1 T1, arg2 T2, arg3 T3, msg ...any)`            | 执行三参数返回 error 的函数   |
 | `MustCall3RE[T1, T2, T3, R](f func(T1, T2, T3) (R, error), arg1 T1, arg2 T2, arg3 T3, msg ...any) R` | 执行三参数返回值和 error 的函数 |
 
 ### Should 系列函数
 
 Should 系列函数在错误发生时会记录日志但继续执行，适用于重要但非致命的操作。
 
-| 函数                                                                                                   | 说明                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| `ShouldCall0E(f func() error, msg ...any)`                                                             | 执行无参数返回 error 的函数     |
+| 函数                                                                                                     | 说明                  |
+|--------------------------------------------------------------------------------------------------------|---------------------|
+| `ShouldCall0E(f func() error, msg ...any)`                                                             | 执行无参数返回 error 的函数   |
 | `ShouldCall0RE[R](f func() (R, error), msg ...any) R`                                                  | 执行无参数返回值和 error 的函数 |
-| `ShouldCall1E[T](f func(T) error, arg T, msg ...any)`                                                  | 执行单参数返回 error 的函数     |
+| `ShouldCall1E[T](f func(T) error, arg T, msg ...any)`                                                  | 执行单参数返回 error 的函数   |
 | `ShouldCall1RE[T, R](f func(T) (R, error), arg T, msg ...any) R`                                       | 执行单参数返回值和 error 的函数 |
-| `ShouldCall2E[T1, T2](f func(T1, T2) error, arg1 T1, arg2 T2, msg ...any)`                             | 执行双参数返回 error 的函数     |
+| `ShouldCall2E[T1, T2](f func(T1, T2) error, arg1 T1, arg2 T2, msg ...any)`                             | 执行双参数返回 error 的函数   |
 | `ShouldCall2RE[T1, T2, R](f func(T1, T2) (R, error), arg1 T1, arg2 T2, msg ...any) R`                  | 执行双参数返回值和 error 的函数 |
-| `ShouldCall3E[T1, T2, T3](f func(T1, T2, T3) error, arg1 T1, arg2 T2, arg3 T3, msg ...any)`            | 执行三参数返回 error 的函数     |
+| `ShouldCall3E[T1, T2, T3](f func(T1, T2, T3) error, arg1 T1, arg2 T2, arg3 T3, msg ...any)`            | 执行三参数返回 error 的函数   |
 | `ShouldCall3RE[T1, T2, T3, R](f func(T1, T2, T3) (R, error), arg1 T1, arg2 T2, arg3 T3, msg ...any) R` | 执行三参数返回值和 error 的函数 |
 
 ### May 系列函数
 
 May 系列函数提供灵活的条件执行功能。
 
-| 函数                                                 | 说明                   |
-| ---------------------------------------------------- | ---------------------- |
+| 函数                                                   | 说明          |
+|------------------------------------------------------|-------------|
 | `May(condition bool, onTrue func(), onFalse func())` | 根据条件执行相应的回调 |
-| `MayTrue(condition bool, callback func())`           | 条件为真时执行回调     |
-| `MayFalse(condition bool, callback func())`          | 条件为假时执行回调     |
-| `Then(condition bool) *MayElse`                      | 创建链式条件执行器     |
-| `(*MayElse).Do(callback func()) *MayElse`            | 条件为真时执行回调     |
-| `(*MayElse).Else(callback func()) *MayElse`          | 条件为假时执行回调     |
+| `MayTrue(condition bool, callback func())`           | 条件为真时执行回调   |
+| `MayFalse(condition bool, callback func())`          | 条件为假时执行回调   |
+| `Then(condition bool) *MayElse`                      | 创建链式条件执行器   |
+| `(*MayElse).Do(callback func()) *MayElse`            | 条件为真时执行回调   |
+| `(*MayElse).Else(callback func()) *MayElse`          | 条件为假时执行回调   |
 
 ### 日志配置
 
@@ -301,19 +301,3 @@ go test -v
 ```bash
 go test -bench=. -benchmem
 ```
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 许可证
-
-MIT License
-
-## 相关项目
-
-- [go.uber.org/zap](https://github.com/uber-go/zap) - 高性能日志库（可选依赖）
-
-## 更新日志
-
-查看 [CHANGELOG.md](CHANGELOG.md) 了解版本更新历史。
